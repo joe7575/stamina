@@ -291,7 +291,10 @@ function stamina.set_sprinting(player, sprinting)
 			def.jump = def.jump + settings.sprint_jump
 		end
 
-		player:set_physics_override(def)
+		-- Check access conflicts with other mods
+		if player:get_meta():get_int("player_physics_under_control") == 0 then
+			player:set_physics_override(def)
+		end
 	end
 
 	if settings.sprint_particles and sprinting then
