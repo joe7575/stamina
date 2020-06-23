@@ -292,7 +292,7 @@ function stamina.set_sprinting(player, sprinting)
 		end
 
 		-- Check access conflicts with other mods
-		if player:get_meta():get_int("player_physics_under_control") == 0 then
+		if player:get_meta():get_int("player_physics_locked") == 0 then
 			player:set_physics_override(def)
 		end
 	end
